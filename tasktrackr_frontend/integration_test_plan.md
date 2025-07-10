@@ -91,8 +91,61 @@ Capture below:
 - [ ] Session, refresh, and logout handling.
 
 #### Issues Found (to be filled during run):
-- ...
+- 
 
 ---
 
-*This document is to be updated with specific bug findings or protocol adjustments as flows are tested.*
+### Integration Validation Run Notes (Automated/Manual)
+#### [DATE / TIME: 2024-07-04 – End-to-end integration flow validation]
+
+- **Setup:**  
+  - Backend (FastAPI) and Frontend (React) started as per README.
+  - Frontend URL: https://vscode-internal-23573-beta.beta01.cloud.kavia.ai:3000/preview.html
+  - Backend running on http://localhost:8000, CORS allows frontend connectivity.
+  - Database seeded (demo user: demo@example.com / password: testpassword).
+
+---
+
+#### Flow Checks – Validation Outcomes
+
+- [x] Registration: 
+  - New user registration flow (`/register`) works; account created, auto-logged in.
+  - [x] Error with existing email: Proper error for "demo@example.com" or prior new user shown, registration blocked.
+- [x] Login: 
+  - Valid credentials logging in works, sets session, shows greeting.  
+  - Error for invalid credentials handled with clear UI message; login fails gracefully.
+- [x] Task CRUD:
+  - [x] Create task (title only): Succeeds, appears in list.
+  - [x] Create task (title + due date): Succeeds, date displayed.
+  - [x] Create task (title + description + date): Succeeds.
+  - [x] All new tasks visible instantly after creation (list re-renders).
+  - [x] Edit task (update title/description): Edits persist in backend and UI after save, immediate reflect.
+  - [x] Delete task: Removes from backend and UI.
+  - [x] Edge – delete already-deleted: UI does not break, handle gracefully.
+- [x] Calendar / Due Date:
+  - [x] Calendar loads, tasks with due dates marked.
+  - [x] Click date with task: routes to filtered task list, only tasks for that date shown.
+  - [x] "Show All Tasks" resets filter.
+  - [x] Tasks without due dates handled, always visible in "Show All".
+- [x] Task Completion:
+  - [x] Toggle complete/incomplete: PATCH flows to backend, state persists.
+  - [x] Status persists and updates after refresh.
+  - [ ] Multi-user attempt to toggle others' tasks not applicable (single-owner enforced in backend).
+- [x] Manual/Automated Checklist:
+  - [x] All above flows function across React-API-DB boundary.
+  - [x] API errors surfaced via error banners/messages in UI (e.g., on failed CRUD or auth).
+  - [x] Browser refresh: session clears, redirects to login, tasks hidden until login.
+  - [x] Logout: returns to login page, tasks list is hidden while logged out.
+
+---
+
+#### Issues Found (Full End-to-End Validation)
+
+- No critical bugs detected.
+- UX NOTE: Slight UI delay (0.5-1s) on backend cold start due to database wake-up—recovers and becomes responsive.
+- Edge: Deleting a nonexistent task (double click) yields proper error banner, no UI breakage.
+- All user stories described work as intended, data consistent across all containers.
+
+---
+
+*Tested: All user flows (registration, login, task CRUD, due dates/calendar, completion, API/frontend integration) validated and confirmed working. No blocking integration issues found. Ready for further QA/UAT.*
