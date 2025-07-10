@@ -1,38 +1,60 @@
 .auth-form-container {
-  background: var(--bg-secondary, #f8f9fa);
-  padding: 2rem 1.5rem 1.5rem 1.5rem;
+  background: var(--bg-surface);
+  padding: 2.1rem 1.7rem 1.5rem 1.7rem;
   max-width: 340px;
-  margin: 2rem auto;
-  border-radius: 12px;
-  box-shadow: 0 2px 18px rgba(0, 0, 0, 0.07);
+  margin: 2.8rem auto;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
 }
 
 .auth-form-container h2 {
   margin-top: 0;
-  color: var(--text-primary, #1a1a1a);
+  color: var(--primary);
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.28rem;
 }
 
 .auth-form-container input {
-  margin-top: 1rem;
+  margin-top: 1.1rem;
   display: block;
   width: 100%;
-  padding: 0.7rem;
+  padding: 0.8rem;
   margin-bottom: 1rem;
-  border: 1px solid var(--border-color, #e9ecef);
-  border-radius: 6px;
-  font-size: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  font-size: 1.06rem;
+  background: var(--bg-alt);
+  color: var(--text-primary);
+  transition: border 0.18s;
 }
-
+.auth-form-container input:focus {
+  border: 1.5px solid var(--primary);
+}
 .auth-form-container .form-error {
   color: #de4737;
-  font-size: 0.95rem;
-  margin-top: 0.5em;
+  font-size: 0.96rem;
+  margin-top: 0.6em;
   background: #fff0ee;
-  border-radius: 5px;
+  border-radius: 6px;
   padding: 0.5em 0.7em;
+  border: 1px solid #ffd0d0;
 }
 
 .btn-large {
   font-size: 1.08rem;
   padding: 11px 26px;
+  background: var(--primary);
+  color: #fff;
+  border-radius: 7px;
+  border: none;
+  margin-top: 0.5em;
+  font-weight: 600;
+  transition: background 0.2s;
+  cursor: pointer;
+  box-shadow: 0 1px 6px 0 rgba(25, 76, 210, 0.03);
+}
+.btn-large:hover {
+  background: var(--accent);
 }

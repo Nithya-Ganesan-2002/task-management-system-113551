@@ -1,26 +1,35 @@
 .calendar-container {
-  background: var(--bg-secondary, #f8f9fa);
-  border-radius: 11px;
-  box-shadow: 0 2px 16px rgba(0,0,0,0.08);
-  padding: 1.4rem 1.2rem;
-  max-width: 500px;
+  background: var(--bg-surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.6rem 1.2rem;
+  max-width: 380px;
   margin: 2.5rem auto 1rem auto;
   text-align: center;
+  border: 1px solid var(--border);
 }
+@media (max-width: 900px) {
+  .calendar-container {
+    max-width: 98vw;
+    padding: 1.1rem 0.3rem;
+  }
+}
+
 .calendar-table {
   border-collapse: collapse;
   width: 100%;
-  margin: 1rem 0;
+  margin: 1rem 0 0.2rem 0;
   background: transparent;
 }
 
 .calendar-table th,
 .calendar-table td {
   width: 14.3%;
-  padding: 0.6em;
+  padding: 9px 0 9px 0;
   border: none;
   text-align: center;
   font-size: 1.02rem;
+  color: var(--text-secondary);
 }
 
 .calendar-cell {
@@ -28,31 +37,44 @@
   position: relative;
   min-height: 28px;
   border-radius: 7px;
-  transition: background 0.1s;
+  transition: background 0.1s, color 0.18s;
+  background: transparent;
+  outline: none;
 }
-
 .calendar-cell.has-task {
-  background: #ff98001a;
+  background: var(--accent-light);
+  color: var(--accent);
   font-weight: 600;
 }
-
+.calendar-cell.has-task:focus, .calendar-cell.has-task:active {
+  background: var(--primary);
+  color: #fff;
+}
+.calendar-cell.today {
+  box-shadow: 0 1px 6px #ffbb0023;
+  border: 1.7px solid var(--accent);
+}
 .calendar-dot {
   display: inline-block;
   width: 8px;
   height: 8px;
-  background: #ff9800;
+  background: var(--accent);
   border-radius: 50%;
   margin-left: 4px;
   vertical-align: middle;
 }
-
 .calendar-day {
-  font-size: 0.98em;
+  font-size: 1.01em;
+  font-weight: 500;
 }
-
 .calendar-hint {
   text-align: left;
-  font-size: 0.95em;
-  color: #888;
-  margin: 0.3rem 0 0.1rem 0;
+  font-size: 0.93em;
+  color: var(--text-light);
+  margin: 0.3rem 0 0.13rem 0.31em;
+}
+
+@media (max-width: 570px) {
+  .calendar-container { margin: 1.2rem auto;}
+  .calendar-table th, .calendar-table td { font-size: 0.94rem; padding: 7px 0;}
 }
