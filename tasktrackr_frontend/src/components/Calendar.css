@@ -1,0 +1,58 @@
+.calendar-container {
+  background: var(--bg-secondary, #f8f9fa);
+  border-radius: 11px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+  padding: 1.4rem 1.2rem;
+  max-width: 500px;
+  margin: 2.5rem auto 1rem auto;
+  text-align: center;
+}
+.calendar-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0;
+  background: transparent;
+}
+
+.calendar-table th,
+.calendar-table td {
+  width: 14.3%;
+  padding: 0.6em;
+  border: none;
+  text-align: center;
+  font-size: 1.02rem;
+}
+
+.calendar-cell {
+  cursor: pointer;
+  position: relative;
+  min-height: 28px;
+  border-radius: 7px;
+  transition: background 0.1s;
+}
+
+.calendar-cell.has-task {
+  background: #ff98001a;
+  font-weight: 600;
+}
+
+.calendar-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background: #ff9800;
+  border-radius: 50%;
+  margin-left: 4px;
+  vertical-align: middle;
+}
+
+.calendar-day {
+  font-size: 0.98em;
+}
+
+.calendar-hint {
+  text-align: left;
+  font-size: 0.95em;
+  color: #888;
+  margin: 0.3rem 0 0.1rem 0;
+}
