@@ -65,8 +65,33 @@ This file documents the protocol and checklist for validating TaskTrackr's cross
 
 Capture below:
 
-- ...
+---
 
+### Integration Validation Run Notes (Automated/Manual)
+
+#### [DATE / TIME: initial run log]
+- **Setup:**  
+  - Backend (FastAPI) and Frontend (React) are assumed to be started per README and environment in VSCode cloud.
+  - Frontend URL: https://vscode-internal-23573-beta.beta01.cloud.kavia.ai:3000/preview.html
+  - Backend runs on http://localhost:8000 (ensure correct CORS config for frontend connectivity).
+  - Database seeded (demo user: demo@example.com / password: testpassword).
+
+#### Flow Checks:
+- [ ] Registration: 
+  - Try new user registration via `/register`
+- [ ] Registration with existing email: 
+  - Try with "demo@example.com" or prior new user.
+- [ ] Login: 
+  - With both valid and invalid credentials.
+- [ ] Task CRUD:
+  - Create, edit, delete tasks (with/without due date/description).
+- [ ] Calendar highlights and task filtering.
+- [ ] Task completion toggle.
+- [ ] Error message surfaces.
+- [ ] Session, refresh, and logout handling.
+
+#### Issues Found (to be filled during run):
+- ...
 
 ---
 
